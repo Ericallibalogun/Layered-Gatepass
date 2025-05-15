@@ -13,9 +13,27 @@ public class Residents implements ResidentRepository{
 
     @Override
     public Resident save(Resident resident) {
+        if(isNew(resident)) saveNew(resident); else update(resident);
+        return resident;
+
+    }
+
+    private void update(Resident resident) {
+        for(int i = 0; i < residents.size(); i++){
+            if(residents.get(i).getId() == resident.getId()){
+                residents.set(i, resident);
+            }
+        }
+
+    }
+
+    private void saveNew(Resident resident) {
         resident.setId(generateId());
         residents.add(resident);
-        return resident;
+    }
+
+    private boolean isNew(Resident resident) {
+        return resident.getId() == 0;
     }
 
     private int generateId() {

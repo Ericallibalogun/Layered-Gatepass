@@ -44,8 +44,10 @@ public class ResidentsTest {
         assertEquals(1, residents.count());
 
         Resident updatedResident = new Resident();
-        residents.save(savedResident);
-        assertEquals(updatedResident, residents.findById(savedResident.getId()).get());
+        residents.save(updatedResident);
+        updatedResident.setId(savedResident.getId());
+
+        assertEquals(1, residents.findById(updatedResident.getId()))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .get();
         assertEquals(1, residents.count());
     }
 
