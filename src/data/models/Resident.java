@@ -1,9 +1,17 @@
 package data.models;
 
 public class Resident {
-        private String firstName;
-        private String lastName;
-        private String houseNumber;
+        private String FullName;
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String fullName) {
+        FullName = fullName;
+    }
+
+    private String houseNumber;
         private int id;
         private String phoneNumber;
         private String email;
@@ -12,22 +20,6 @@ public class Resident {
         private AccessCode accessCode;
 
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//
 //    public String getHouseNumber() {
 //        return houseNumber;
 //    }

@@ -9,6 +9,7 @@ import java.util.Optional;
 public class Residents implements ResidentRepository{
 
     private List<Resident> residents = new ArrayList<>();
+    private int counter = 0;
 
 
     @Override
@@ -37,7 +38,8 @@ public class Residents implements ResidentRepository{
     }
 
     private int generateId() {
-        return 1;
+        return ++counter;
+
     }
 
     @Override
@@ -52,6 +54,11 @@ public class Residents implements ResidentRepository{
 
     @Override
     public Optional<Resident> findByFullName(String fullName) {
+        for(Resident resident : residents){
+            if(resident.getFullName().equals(fullName)){
+                return Optional.of(resident);
+            }
+        }
         return Optional.empty();
     }
 
