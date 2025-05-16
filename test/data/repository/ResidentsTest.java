@@ -74,7 +74,7 @@ public class ResidentsTest {
         assertEquals(2, residents.count());
     }
     @Test
-    public void testThatResidentIsFoundByUsername(){
+    public void testThatResidentIsFoundByFullname(){
         Resident resident1 = new Resident();
         resident1.setFullName("Eric Allibalogun");
         residents.save(resident1);
@@ -87,7 +87,19 @@ public class ResidentsTest {
         assertEquals(resident1, residents.findByFullName("Eric Allibalogun").get());
         assertEquals(resident2, residents.findByFullName("Monica karma").get());
     }
+    @Test
+    public void testSaveTwoResidents_DeleteOne(){
+        Resident firstResident = new Resident();
+        residents.save(firstResident);
+        assertEquals(1, residents.count());
 
+        Resident secondResident = new Resident();
+        residents.save(secondResident);
+        assertEquals(2, residents.count());
+
+        residents.deleteById(firstResident.getId());
+        assertEquals(1, residents.count());
+    }
 
 
   

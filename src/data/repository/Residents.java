@@ -79,6 +79,6 @@ public class Residents implements ResidentRepository{
 
     @Override
     public void deleteById(int id) {
-
+        if(findById(id).isPresent()) residents.remove(findById(id).get());
     }
 }
