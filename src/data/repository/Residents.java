@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class Residents implements ResidentRepository{
 
-    private List<Resident> residents = new ArrayList<>();
+    private static List<Resident> residents = new ArrayList<>();
     private int counter = 0;
 
 
