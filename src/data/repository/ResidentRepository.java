@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ResidentRepository  {
+    List<Resident> getResident();
     Resident save(Resident resident);
     Optional<Resident> findById(int id);
     Optional<Resident> findByFullName(String fullName);
@@ -14,5 +15,5 @@ public interface ResidentRepository  {
     int count();
     void deleteAll();
     void deleteById(int id);
-
+    void delete(Resident resident);
 }

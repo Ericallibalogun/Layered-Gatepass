@@ -11,6 +11,15 @@ public class Residents implements ResidentRepository{
     private static List<Resident> residents = new ArrayList<>();
     private int counter = 0;
 
+    public static void reset() {
+        residents.clear();
+    }
+
+
+    @Override
+    public List<Resident> getResident() {
+        return List.of();
+    }
 
     @Override
     public Resident save(Resident resident) {
@@ -80,5 +89,10 @@ public class Residents implements ResidentRepository{
     @Override
     public void deleteById(int id) {
         if(findById(id).isPresent()) residents.remove(findById(id).get());
+    }
+
+    @Override
+    public void delete(Resident resident) {
+
     }
 }

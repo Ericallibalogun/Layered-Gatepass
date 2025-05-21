@@ -12,16 +12,25 @@ public class ResidentServicesImpl implements ResidentServices{
     @Override
     public RegisterResidentResponse register(RegisterResidentRequest request) {
         Resident resident = new Resident();
-        resident.setFullName(resident.getFullName());
-        resident.setEmail(resident.getEmail());
-        resident.setPhoneNumber(resident.getPhoneNumber());
+        resident.setFullName(request.getFullName());
+        resident.setEmail(request.getEmail());
+        resident.setPhoneNumber(request.getPhoneNumber());
+        resident.setAddress(request.getAddress());
+        resident.setPassword(request.getPassword());
         residentRepository.save(resident);
         return null;
     }
     public RegisterResidentResponse login(RegisterResidentRequest request){
         Resident resident = new Resident();
-        resident.setEmail(resident.getEmail());
+        resident.setFullName(request.getFullName());
+        resident.setPassword(request.getPassword());
         residentRepository.save(resident);
         return null;
+    }
+    private boolean residentIsPresent(RegisterResidentRequest request){
+        for(Resident residents : residentRepository.getResident()){
+            return residents.equals(request);
+        }
+        return true;
     }
 }

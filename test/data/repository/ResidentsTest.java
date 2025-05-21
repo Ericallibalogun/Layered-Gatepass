@@ -4,17 +4,16 @@ import data.models.Resident;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 public class ResidentsTest {
-   private ResidentRepository residents;
-   private Resident resident;
+    private ResidentRepository residents;
+    private Resident resident;
 
     @BeforeEach
     void setUp() {
-       residents = new Residents();
-       resident = new Resident();
+        residents = new Residents();
+        resident = new Resident();
+        Residents.reset();
     }
     @Test
     public void testCountIsZero(){
@@ -102,5 +101,5 @@ public class ResidentsTest {
     }
 
 
-  
+
 }

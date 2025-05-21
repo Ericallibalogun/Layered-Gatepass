@@ -11,69 +11,39 @@ public class Resident {
         FullName = fullName;
     }
 
-    private String houseNumber;
+        private String address;
         private int id;
         private String phoneNumber;
         private String email;
         private String occupation;
         private Visitor visitor;
         private AccessCode accessCode;
+        private String password;
 
-
-//    public String getHouseNumber() {
-//        return houseNumber;
-//    }
-//
-//    public void setHouseNumber(String houseNumber) {
-//        this.houseNumber = houseNumber;
-//    }
-
-    public int getId() {
-        return id;
+    public String getPassword() {
+        return password;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getAddress() {return address;}
 
-//    public String getOccupation() {
-//        return occupation;
-//    }
-//
-//    public void setOccupation(String occupation) {
-//        this.occupation = occupation;
-//    }
-//
-//    public Visitor getVisitor() {
-//        return visitor;
-//    }
-//
-//    public void setVisitor(Visitor visitor) {
-//        this.visitor = visitor;
-//    }
-//
-//    public AccessCode getAccessCode() {
-//        return accessCode;
-//    }
-//
-//    public void setAccessCode(AccessCode accessCode) {
-//        this.accessCode = accessCode;
-//    }
+    public void setAddress(String address) {this.address = address;}
 
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
+
+    public String getPhoneNumber() {return phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
+
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
 }
