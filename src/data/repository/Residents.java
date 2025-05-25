@@ -95,4 +95,13 @@ public class Residents implements ResidentRepository{
     public void delete(Resident resident) {
 
     }
+
+    @Override
+    public Resident findByEmail(String email) {
+        for(Resident residentEmail : residents){
+            if(residentEmail.getEmail().contains(email)) return residentEmail;
+        }
+        return null;
+    }
+
 }
