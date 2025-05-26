@@ -83,6 +83,7 @@ public class Residents implements ResidentRepository{
 
     @Override
     public void deleteAll() {
+        residents.clear();
 
     }
 
@@ -100,6 +101,14 @@ public class Residents implements ResidentRepository{
     public Resident findByEmail(String email) {
         for(Resident residentEmail : residents){
             if(residentEmail.getEmail().contains(email)) return residentEmail;
+        }
+        return null;
+    }
+
+    @Override
+    public Resident findByPhoneNumber(String phoneNumber) {
+        for(Resident residentPhone : residents){
+            if(residentPhone.getPhoneNumber().contains(phoneNumber)) return residentPhone;
         }
         return null;
     }

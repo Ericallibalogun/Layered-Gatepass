@@ -17,4 +17,5 @@ public interface ResidentRepository  {
     void deleteById(int id);
     void delete(Resident resident);
     Resident findByEmail(String resident);
+    Resident findByPhoneNumber(String phoneNumber);
 }

@@ -55,9 +55,7 @@ public class AccessCode {
         return resident;
     }
 
-//    public void setResident(Resident resident) {
-//        this.resident = resident;
-//    }
+    public void setResident(Resident resident) {this.resident = resident;}
 
     public Visitor getVisitor() {
         return visitor;

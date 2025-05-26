@@ -18,7 +18,7 @@ public class ResidentServicesImpl implements ResidentServices{
         resident.setAddress(request.getAddress());
         resident.setPassword(request.getPassword());
         verifyIfEmailExist(request.getEmail());
-
+        verifyPhoneNumber(request.getPhoneNumber());
         residentRepository.save(resident);
         return null;
     }
@@ -31,6 +31,10 @@ public class ResidentServicesImpl implements ResidentServices{
     }
     private void verifyIfEmailExist(String email){
         Resident emailExists = residentRepository.findByEmail(email);
-        if(emailExists == null) throw new IllegalArgumentException("Email has already been used");
+        if(emailExists != null) throw new IllegalArgumentException("Email has already been used");
+    }
+    private void verifyPhoneNumber(String phoneNumber){
+        Resident phoneExist = residentRepository.findByPhoneNumber(phoneNumber);
+        if (phoneExist != null) throw new IllegalArgumentException("Phone number is already used");
     }
 }
