@@ -2,8 +2,8 @@ package services;
 
 import data.repository.ResidentRepository;
 import data.repository.Residents;
+import dtos.requests.LoginResidentRequest;
 import dtos.requests.RegisterResidentRequest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,11 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ResidentServicesImplTest {
+    LoginResidentRequest loginRequest;
     RegisterResidentRequest registerRequest;
     ResidentRepository residentRepository;
     ResidentServices residentServices;
     @BeforeEach
     void setUp() {
+        loginRequest = new LoginResidentRequest();
         registerRequest = new RegisterResidentRequest();
         residentRepository = new Residents();
         residentServices = new ResidentServicesImpl();
@@ -40,9 +42,9 @@ public class ResidentServicesImplTest {
         residentServices.register(registerRequest);
         assertEquals(1,residentRepository.count());
 
-        registerRequest.setFullName("Moses Idowu");
+        loginRequest.setEmail("allieric71@gmail.com");
         registerRequest.setPassword("121212");
-        residentServices.login(registerRequest);
+        residentServices.login(loginRequest);
     }
     @Test
     public void testRegisterTwoResidentsWithTheSameEmail_ThrowErrorMessage(){
