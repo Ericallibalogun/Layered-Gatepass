@@ -7,37 +7,34 @@ import dtos.requests.LoginResidentRequest;
 import dtos.requests.RegisterResidentRequest;
 import dtos.responses.LoginResidentResponse;
 import dtos.responses.RegisterResidentResponse;
-
+import utils.Mapper;
 
 
 public class ResidentServicesImpl implements ResidentServices{
     private ResidentRepository residentRepository = new Residents();
-    Resident resident = new Resident();
+
 
 
     @Override
     public RegisterResidentResponse register(RegisterResidentRequest request) {
-        resident.setFullName(request.getFullName());
-        resident.setEmail(request.getEmail());
-        resident.setPhoneNumber(request.getPhoneNumber());
-        resident.setAddress(request.getAddress());
-        resident.setPassword(request.getPassword());
         verifyIfEmailExist(request.getEmail());
         verifyPhoneNumber(request.getPhoneNumber());
+
+        Resident resident = Mapper.map(request);
         residentRepository.save(resident);
-        return new RegisterResidentResponse("Registration successful!");
+
+        return Mapper.mapRegister(resident);
     }
     public LoginResidentResponse login(LoginResidentRequest request) {
         Resident resident = residentRepository.findByEmail(request.getEmail());
-        boolean residentIsEmpty = resident == null;
-        if (residentIsEmpty) throw new RuntimeException("User not found");
+
+        boolean residentIsNull = resident == null;
+        if (residentIsNull) throw new RuntimeException("User not found");
 
         boolean passwordIsNotFound = !resident.getPassword().equals(request.getPassword());
         if (passwordIsNotFound) throw new RuntimeException("Invalid password");
 
-        return new LoginResidentResponse(resident.getId(), resident.getFullName(),
-                "Welcome back " + resident.getFullName() + "! Your ID is " + resident.getId()
-        );
+        return Mapper.mapLoginResponse(resident);
     }
 
     private void verifyIfEmailExist(String email) {
