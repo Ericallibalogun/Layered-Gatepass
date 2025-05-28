@@ -21,6 +21,7 @@ public class ResidentServicesImplTest {
         registerRequest = new RegisterResidentRequest();
         residentRepository = new Residents();
         residentServices = new ResidentServicesImpl();
+        Residents.reset();
     }
     @Test
     void testRegisterOneResidents_shouldSaveAll() {
@@ -37,7 +38,7 @@ public class ResidentServicesImplTest {
         registerRequest.setFullName("Moses Idowu");
         registerRequest.setPassword("121212");
         registerRequest.setAddress("Lagos");
-        registerRequest.setPhoneNumber("0704445566");
+        registerRequest.setPhoneNumber("0704445766");
         registerRequest.setEmail("allieric71@gmail.com");
         residentServices.register(registerRequest);
         assertEquals(1,residentRepository.count());

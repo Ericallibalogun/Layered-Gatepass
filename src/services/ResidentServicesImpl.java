@@ -8,12 +8,15 @@ import dtos.requests.RegisterResidentRequest;
 import dtos.responses.LoginResidentResponse;
 import dtos.responses.RegisterResidentResponse;
 
+
+
 public class ResidentServicesImpl implements ResidentServices{
     private ResidentRepository residentRepository = new Residents();
+    Resident resident = new Resident();
+
 
     @Override
     public RegisterResidentResponse register(RegisterResidentRequest request) {
-        Resident resident = new Resident();
         resident.setFullName(request.getFullName());
         resident.setEmail(request.getEmail());
         resident.setPhoneNumber(request.getPhoneNumber());
@@ -37,9 +40,9 @@ public class ResidentServicesImpl implements ResidentServices{
         );
     }
 
-    private void verifyIfEmailExist(String email){
+    private void verifyIfEmailExist(String email) {
         Resident emailExists = residentRepository.findByEmail(email);
-        if(emailExists != null) throw new IllegalArgumentException("Email has already been used");
+        if (emailExists != null) throw new IllegalArgumentException("Email has already been used");
     }
     private void verifyPhoneNumber(String phoneNumber){
         Resident phoneExist = residentRepository.findByPhoneNumber(phoneNumber);
