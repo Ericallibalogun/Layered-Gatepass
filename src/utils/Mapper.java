@@ -25,7 +25,6 @@ public class Mapper {
         return new LoginResidentResponse(resident.getId(), resident.getFullName(),
                 "Welcome back " + resident.getFullName() + "! Your ID is " + resident.getId()
         );
-
     }
 
 }
